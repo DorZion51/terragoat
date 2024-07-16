@@ -7,13 +7,16 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     type = "SystemAssigned"
   }
   default_node_pool {
+    os_disk_type = "Ephemeral"
+    enable_host_encryption = true
+    only_critical_addons_enabled = true
     name       = "default"
     vm_size    = "Standard_D2_v2"
     node_count = 2
   }
   addon_profile {
     oms_agent {
-      enabled = false
+      enabled = true
     }
   }
   role_based_access_control {
@@ -29,4 +32,5 @@ resource azurerm_kubernetes_cluster "k8s_cluster" {
     git_repo             = "terragoat"
     yor_trace            = "6103d111-864e-42e5-899c-1864de281fd1"
   }
+  sku_tier = "Standard"
 }
