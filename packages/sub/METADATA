@@ -255,6 +255,7 @@ List available checks:
 checkov --list 
 ```
 
+
 Allow only 2 checks to run: 
 ```sh
 checkov --directory . --check CKV_AWS_20,CKV_AWS_57
